@@ -1,0 +1,17 @@
+---
+- name: Download openDCIM
+  get_url: >
+   url=http://www.opendcim.org/packages/openDCIM-4.0.1.tar.gz
+   dest=/usr/local/src/openDCIM-4.0.1.tar.gz
+  tags:
+    - opendcim
+- name: Extract and install openDCIM
+  unarchive: src=/usr/local/src/openDCIM-4.0.1.tar.gz
+             dest=/var/www
+             copy=no
+  tags:
+    - opendcim
+- name: Create symlink for openDCIM
+  file: src=/var/www/openDCIM-4.0.1 dest=/var/www/openDCIM state=link
+  tags:
+    - opendcim

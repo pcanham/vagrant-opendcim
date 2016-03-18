@@ -1,0 +1,13 @@
+---
+# php modules
+- name: Install PHP (yum)
+  yum: "name={{item}} state=present"
+  sudo: yes
+  with_items: [
+    "php",
+    "php-mysql",
+    "php-mbstring"
+  ]
+  tags:
+    - php
+  when: ansible_os_family  == "RedHat" or ansible_os_family  == "Centos"
